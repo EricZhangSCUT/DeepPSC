@@ -140,32 +140,3 @@ class test(object):
         np.save('../results/rmsd/%s.npy' % self.train_name, self.rmsds)
         np.save('../results/gdt/%s.npy' % self.train_name, self.gdts)
         np.save('../results/rama/%s.npy' % self.train_name, self.ramas)
-
-
-if __name__ == "__main__":
-    from model import DeepPBS
-    set_ = input('set=')
-    train_name = 'conmap-Conv4Map-LSTM-Joint-%s' % set_
-    input_format = train_name.split('-')[0]
-    if input_format == 'image':
-        dataset = dataset.Image2Tor(
-            'test', with_target=False, aa_batchsize=1600)
-        input_dim = 5
-    elif input_format == 'KNN':
-        dataset = dataset.KNN2Tor('test', with_target=False, aa_batchsize=6400)
-        input_dim = 120
-    elif input_format == 'conmap':
-        dataset = dataset.Conmap2Tor(
-            'test', with_target=False, aa_batchsize=1600)
-        input_dim = 1
-    test_loader = DataLoader(dataset=dataset, num_workers=32, pin_memory=True)
-    model_blocks = {'local': 'Conv4Map', 'global': 'LSTM', 'predict': 'Joint'}
-    model = DeepPBS(model_blocks, dims=[input_dim, 32, 1024, 4])
-
-    tester = test(model, train_name=train_name, test_loader=test_loader)
-    # tester.test_top_models()
-
-    tester.test_model('29')
-    print(np.round(np.mean(np.array(tester.rmsds), axis=0), 3))
-    print(np.round(np.mean(np.mean(np.array(tester.gdts), axis=-1), axis=0), 3))
-    print(np.round(np.mean(np.array(tester.ramas), axis=0), 3))
