@@ -12,4 +12,4 @@ Pytorch
 
 # References
 Xing Zhang, Junwen Luo, Yi Cai, Wei Zhu, Xiaofeng Yang, Hongmin Cai, Zhanglin Lin. DeepPSC (protein structure camera): computer vision-based protein backbone structure reconstruction from alpha carbon trace as a case study.  
-Preprinted at BioRxiv: https://doi.org/10.1101/2020.08.12.247312
+Preprinted at bioRxiv: https://doi.org/10.1101/2020.08.12.247312
