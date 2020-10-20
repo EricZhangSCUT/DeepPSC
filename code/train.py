@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from model import DeepPBS
+from model import DeepPS
 import dataset
 from torch.utils.data import DataLoader
 import pathlib
@@ -48,7 +48,7 @@ train_loader = DataLoader(dataset=train_dataset, shuffle=True,
 val_loader = DataLoader(dataset=val_dataset, num_workers=32, pin_memory=True)
 test_loader = DataLoader(dataset=test_dataset, num_workers=32, pin_memory=True)
 
-model = DeepPBS(dims=[inp_dim, args.loc_dim, args.glo_dim, args.tgt_dim])
+model = DeepPSC(dims=[inp_dim, args.loc_dim, args.glo_dim, args.tgt_dim])
 
 logger.info('-----Model-----')
 logger.info(model)
