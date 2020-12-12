@@ -73,7 +73,7 @@ class JointPredictor(nn.Module):
         return x
 
 
-class DeepPS(nn.Module):
+class DeepPSC(nn.Module):
     def __init__(self, dims=[5, 512, 1024, 4]):
         super().__init__()
 
