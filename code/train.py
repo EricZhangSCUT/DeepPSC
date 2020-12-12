@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from model import DeepPS
+from model import DeepPSC
 import dataset
 from torch.utils.data import DataLoader
 import pathlib
